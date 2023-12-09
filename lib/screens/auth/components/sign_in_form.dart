@@ -5,13 +5,17 @@ import 'package:form_field_validator/form_field_validator.dart';
 
 import '../../../constants.dart';
 
-class SignInForm extends StatelessWidget {
-   SignInForm({
+class SignInForm extends StatefulWidget {
+  const SignInForm({
     Key? key,
   }) : super(key: key);
 
-  final _formKey = GlobalKey<FormState>();
+  @override
+  State<SignInForm> createState() => _SignInFormState();
+}
 
+class _SignInFormState extends State<SignInForm> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
