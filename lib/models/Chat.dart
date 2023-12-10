@@ -69,3 +69,32 @@ List chatsData = [
     isActive: false,
   ),
 ];
+
+/*class Chat {
+  final String id;
+  final String name;
+  final String lastMessage;
+  final String image;
+  final String time;
+  final bool isActive;
+
+  Chat({
+    required this.id,
+    required this.name,
+    required this.lastMessage,
+    required this.image,
+    required this.time,
+    required this.isActive,
+  });
+
+  factory Chat.fromMap(Map<String, dynamic> map) {
+    return Chat(
+      id: map['id'] ?? '',
+      name: map['name'] ?? '',
+      lastMessage: map['lastMessage'] ?? '',
+      image: map['image'] ?? '',
+      time: map['time'] ?? '',
+      isActive: map['isActive'] ?? false,
+    );
+  }
+}*/

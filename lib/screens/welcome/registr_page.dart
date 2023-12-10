@@ -67,7 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Hello
-              const Text("Hello there  ",
+              const Text("Hello there ",
                   style: TextStyle(fontFamily: 'Schyler', fontSize: 50)),
               const SizedBox(height: 10),
               const Text(

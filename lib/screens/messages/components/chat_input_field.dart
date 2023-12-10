@@ -1,9 +1,12 @@
+import 'package:chat/models/ChatMessage.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 
 class ChatInputField extends StatefulWidget {
+  final Function(ChatMessage) onMessageSent;
   const ChatInputField({
+    required this.onMessageSent,
     Key? key,
   }) : super(key: key);
 
@@ -84,9 +87,22 @@ class _ChatInputFieldState extends State<ChatInputField> {
                       ),
                     ),
                     if (!_hasText) ...[
-                      const Icon(
-                        Icons.send,
-                        color: kPrimaryColor,
+                      GestureDetector(
+                        onTap: () {
+                          ChatMessage newMessage = ChatMessage(
+                            text: _textEditingController.text,
+                            messageType: ChatMessageType.text,
+                            messageStatus: MessageStatus.not_sent,
+                            isSender: true,
+                          );
+
+                          widget.onMessageSent(newMessage);
+                          _textEditingController.clear();
+                        },
+                        child: const Icon(
+                          Icons.send,
+                          color: kPrimaryColor,
+                        ),
                       ),
                     ] else ...[
                       Icon(

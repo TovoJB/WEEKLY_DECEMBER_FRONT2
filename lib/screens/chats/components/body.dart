@@ -36,6 +36,7 @@ class BodyChats extends StatelessWidget {
                               builder: (context) => const MessagesScreen())),
                       chat: chatsData[index],
                     )))
+                    
       ],
     );
   }
