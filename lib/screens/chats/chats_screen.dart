@@ -1,4 +1,5 @@
 import 'package:chat/constants.dart';
+import 'package:chat/read%20data/get_user_name.dart';
 import 'package:chat/screens/chats/components/body.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,8 @@ class ChatsScreen extends StatefulWidget {
 }
 
 class _ChatsScreenState extends State<ChatsScreen> {
+  final user = FirebaseAuth.instance.currentUser!;
+
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -50,17 +53,60 @@ class _ChatsScreenState extends State<ChatsScreen> {
   AppBar buildAppBar() {
     return AppBar(
       automaticallyImplyLeading: false,
-      title: const Text(
-        'chats',
+      title: FutureBuilder<String?>(
+        future: getUserNameFromEmail(user.email!),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            print(snapshot.data);
+            if (snapshot.hasData) {
+              return Text(
+                snapshot.data!,
+                style: const TextStyle(color: Colors.white),
+              );
+            } else {
+              return const Text(
+                'Utilisateur inconnu',
+                style: TextStyle(color: Colors.white),
+              );
+            }
+          }
+          return const Text(
+            'Chargement...',
+            style: TextStyle(color: Colors.white),
+          );
+        },
+      ),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.logout),
+          color: Colors.white,
+          onPressed: () {
+            FirebaseAuth.instance.signOut();
+          },
+        )
+      ],
+      backgroundColor: kPrimaryColor,
+    );
+  }
+}
+/*
+  AppBar buildAppBar() {
+    //------------------------- appele de base de donne
+    return AppBar(
+      automaticallyImplyLeading: false,
+      title: Text(
+        getUserNameFromEmail(user.email!),
         style: TextStyle(color: Colors.white),
       ),
       actions: [
         IconButton(
             icon: const Icon(Icons.logout),
             color: Colors.white,
-            onPressed: () { FirebaseAuth.instance.signOut();})
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+            })
       ],
       backgroundColor: kPrimaryColor,
     );
   }
-}
+}*/
