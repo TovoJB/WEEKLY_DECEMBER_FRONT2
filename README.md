@@ -17,8 +17,8 @@ L'application permettra aux utilisateurs de communiquer entre eux via des messag
 1. Clonez le dépôt GitHub :
 
    ```sh
-   git clone https://github.com/TovoJB/WEEKLY_DECEMBER_FRONT2.git
-2. cd WEEKLY_DECEMBER_FRONT2 :
+   git clone https://github.com/TovoJB/WEEKLY_DECEMBER_MOBILE2.git
+2. cd WEEKLY_DECEMBER_MOBILE2 :
 3. cd flutter pub get :
 3. flutter run :
 **objectif:**
