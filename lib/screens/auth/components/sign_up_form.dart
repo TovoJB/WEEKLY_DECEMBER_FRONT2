@@ -1,4 +1,4 @@
-import 'package:chat/service/auth/auth_service.dart';
+/*import 'package:chat/service/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
@@ -122,3 +122,4 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 }
+*/

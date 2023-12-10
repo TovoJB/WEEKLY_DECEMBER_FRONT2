@@ -1,3 +1,4 @@
+import 'package:chat/constants.dart';
 import 'package:chat/screens/welcome/forgot_pw_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -126,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                          color: Colors.deepPurple,
+                          color: kPrimaryColor,
                           borderRadius: BorderRadius.circular(12)),
                       child: const Center(
                         child: Text(

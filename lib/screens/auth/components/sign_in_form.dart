@@ -1,4 +1,4 @@
-import 'package:chat/screens/chats/chats_screen.dart';
+/*import 'package:chat/screens/chats/chats_screen.dart';
 import 'package:chat/screens/messages/message_screen.dart';
 import 'package:chat/service/auth/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -80,3 +80,4 @@ class _SignInFormState extends State<SignInForm> {
     );
   }
 }
+*/

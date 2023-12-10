@@ -1,4 +1,4 @@
-import 'package:chat/constants.dart';
+/*import 'package:chat/constants.dart';
 import 'package:chat/screens/auth/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -85,3 +85,4 @@ class SignInScreen extends StatelessWidget {
     );
   }
 }
+*/

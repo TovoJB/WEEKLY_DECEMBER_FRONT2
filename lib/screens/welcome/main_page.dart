@@ -1,3 +1,5 @@
+import 'package:chat/screens/chats/chats_screen.dart';
+import 'package:chat/screens/messages/message_screen.dart';
 import 'package:chat/screens/welcome/auth_page.dart';
 import 'package:chat/screens/welcome/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,7 +15,8 @@ class Mainpage extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Homepage();
+            //return Homepage();
+            return ChatsScreen();
           } else {
             return authPage();
           }

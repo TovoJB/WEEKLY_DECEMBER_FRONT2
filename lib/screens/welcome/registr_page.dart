@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:chat/constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -18,23 +20,32 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmpassWordController = TextEditingController();
-  final _firstNameController = TextEditingController();
-  final _lastNameController = TextEditingController();
-  final _ageController = TextEditingController();
+  final _NameController = TextEditingController();
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _NameController.dispose();
     super.dispose();
   }
 
   Future signup() async {
     if (passwordConfirmed()) {
+      //create user
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
     }
+    // add user details
+    addUserDetails(_NameController.text.trim(), _emailController.text.trim());
+  }
+
+  Future addUserDetails(String name, String email) async {
+    await FirebaseFirestore.instance.collection('users_collection').add({
+      'name': name,
+      'email': email,
+    });
   }
 
   bool passwordConfirmed() {
@@ -55,22 +66,35 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(
-                Icons.message_rounded,
-                size: 100,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
               // Hello
               const Text("Hello there  ",
-                  style: TextStyle(fontFamily: 'Schyler', fontSize: 52)),
+                  style: TextStyle(fontFamily: 'Schyler', fontSize: 50)),
               const SizedBox(height: 10),
               const Text(
                 "Register below with you detail",
                 style: TextStyle(fontSize: 20),
               ),
               const SizedBox(height: 50),
+
+              // firstName textField
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: TextField(
+                      controller: _NameController,
+                      decoration: const InputDecoration(
+                          border: InputBorder.none, hintText: "Name"),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
 
               //email textfield
               Padding(
@@ -90,8 +114,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               ),
-              //password textfield
               const SizedBox(height: 10),
+              //password textfield
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
@@ -140,7 +164,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                          color: Colors.deepPurple,
+                          color: kPrimaryColor,
                           borderRadius: BorderRadius.circular(12)),
                       child: const Center(
                         child: Text(

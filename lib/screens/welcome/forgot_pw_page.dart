@@ -1,3 +1,4 @@
+import 'package:chat/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple[200],
+        backgroundColor: Colors.green[200],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -80,7 +81,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           MaterialButton(
             onPressed: passworldReset,
             child: Text('Reset password'),
-            color: Colors.deepPurple,
+            color: kPrimaryColor,
           )
         ],
       ),

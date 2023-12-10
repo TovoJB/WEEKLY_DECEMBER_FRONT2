@@ -1,4 +1,4 @@
-import 'package:chat/constants.dart';
+/*import 'package:chat/constants.dart';
 import 'package:flutter/material.dart';
 import 'components/logo_with_title.dart';
 
@@ -36,4 +36,4 @@ class _VerificationScreenState extends State<VerificationScreen> {
       ),
     );
   }
-}
+}*/
