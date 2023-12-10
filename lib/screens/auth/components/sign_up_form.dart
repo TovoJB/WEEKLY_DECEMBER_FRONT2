@@ -1,5 +1,7 @@
+import 'package:chat/service/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 import '../sign_in_screen.dart';
@@ -15,7 +17,24 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
+  final emailController = TextEditingController();
+  final passWordController = TextEditingController();
+  final userNameController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
+
+  void signUp() async {
+    final authService = Provider.of<AuthService>(context, listen: false);
+
+    try {
+      await authService.signUpWithEmailandPassworl(
+          emailController.text, passWordController.text);
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toString())));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -23,6 +42,7 @@ class _SignUpFormState extends State<SignUpForm> {
       child: Column(
         children: [
           TextFormField(
+            controller: userNameController,
             validator: RequiredValidator(errorText: requiredField),
             textInputAction: TextInputAction.next,
             decoration: const InputDecoration(hintText: 'Username'),
@@ -32,6 +52,7 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           const SizedBox(height: defaultPadding),
           TextFormField(
+            controller: emailController,
             validator: RequiredValidator(errorText: requiredField),
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
@@ -43,6 +64,7 @@ class _SignUpFormState extends State<SignUpForm> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: defaultPadding),
             child: TextFormField(
+              controller: passWordController,
               validator: RequiredValidator(errorText: "Password is required"),
               decoration: const InputDecoration(hintText: 'Password'),
               obscureText: true,
@@ -64,6 +86,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     ),
                   );
                 }
+                signUp();
               },
               child: const Text("Sign Up"),
             ),

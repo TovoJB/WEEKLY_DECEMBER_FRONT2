@@ -1,7 +1,9 @@
 import 'package:chat/screens/chats/chats_screen.dart';
 import 'package:chat/screens/messages/message_screen.dart';
+import 'package:chat/service/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 
@@ -15,6 +17,20 @@ class SignInForm extends StatefulWidget {
 }
 
 class _SignInFormState extends State<SignInForm> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  void singIn() {
+    final authService = Provider.of<AuthService>(context, listen: false);
+    try {
+      authService.singInWithEmailandPassword(
+          emailController.text, passwordController.text);
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toString())));
+    }
+  }
+
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -23,6 +39,7 @@ class _SignInFormState extends State<SignInForm> {
       child: Column(
         children: [
           TextFormField(
+            controller: emailController,
             validator: RequiredValidator(errorText: requiredField),
             decoration: const InputDecoration(hintText: 'Username'),
             textInputAction: TextInputAction.next,
@@ -33,6 +50,7 @@ class _SignInFormState extends State<SignInForm> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: defaultPadding),
             child: TextFormField(
+              controller: passwordController,
               validator: RequiredValidator(errorText: "Password is required"),
               obscureText: true,
               decoration: const InputDecoration(hintText: 'Password'),
@@ -52,6 +70,7 @@ class _SignInFormState extends State<SignInForm> {
                     builder: (context) => const ChatsScreen(),
                   ),
                 );
+                singIn();
               }
             },
             child: const Text("Sign In"),

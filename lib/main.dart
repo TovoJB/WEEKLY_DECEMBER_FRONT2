@@ -2,6 +2,7 @@ import 'package:chat/firebase_options.dart';
 import 'package:chat/providers/message_provider.dart';
 import 'package:chat/providers/user_provider.dart';
 import 'package:chat/screens/welcome/welcome_screen.dart';
+import 'package:chat/service/auth/auth_service.dart';
 import 'package:chat/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ Future<void> main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => AuthService()),
         ChangeNotifierProvider(create: (context) => UserProvider()),
         ChangeNotifierProvider(create: (context) => MessageProvider()),
       ],
