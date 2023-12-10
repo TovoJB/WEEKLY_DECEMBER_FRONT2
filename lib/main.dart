@@ -1,6 +1,8 @@
 import 'package:chat/firebase_options.dart';
 import 'package:chat/providers/message_provider.dart';
 import 'package:chat/providers/user_provider.dart';
+import 'package:chat/screens/welcome/login_page.dart';
+import 'package:chat/screens/welcome/main_page.dart';
 import 'package:chat/screens/welcome/welcome_screen.dart';
 import 'package:chat/service/auth/auth_service.dart';
 import 'package:chat/theme.dart';
@@ -35,7 +37,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightThemeData(context),
       themeMode: ThemeMode.light,
-      home: const WelcomeScreen(),
+      //home: const WelcomeScreen(),
+      home: Mainpage(),
     );
   }
 }
