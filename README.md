@@ -1,19 +1,27 @@
-# Chat/Messaging App Light and Dark Theme - Flutter UI
+# Chat/Messaging WEEKLY_DECEMBER_FRONT2
 
-## [Complete Source Code (Patreon only)](https://bit.ly/3n5mdwS)
+Ce projet vise à développer une application mobile de messagerie instantanée.
+L'application permettra aux utilisateurs de communiquer entre eux via des messages textuels,
+ vocaux, et d'autres médias.
+**installation:**
 
-**Packages we are using:**
+## Installation
 
-- goole_fonts: [link](https://pub.dev/packages/google_fonts)
+### Prérequis
+- Assurez-vous d'avoir [Git](https://git-scm.com/) installé.
+- Installez [Flutter](https://flutter.dev/docs/get-started/install) sur votre système.
 
-Today we gonna build messing/chat app #ui using #flutter that runs both Android and iOS devices also has a dark and light theme. We create in total 4 screens all of that support both Dark Theme and Light Theme. At first, we design a welcome screen that contains an image with a tag line also has a skip button. Once the user press, its transfers to the Sign-in or Sign-up screen. The last two screens are the main screen, Chats screens it shows the list of people you are chated with. At the end message screen which support text message, audio message, and video messages.
-
-**Complete UI Contains:**
+### Étapes d'installation
+1. Clonez le dépôt GitHub :
+   ```sh
+   git clone https://github.com/NomUtilisateur/NomProjet.git
+2. cd NomProjet :
+3. cd flutter pub get :
+3. flutter run :
+**objectif:**
 
 ► Splash Screen
-► Welcome Screen
 ► Sign in & Sign up
-► Phone Validation (OTP)
 ► Forget Password
 ► Change Password
 ► Chats Screen
@@ -21,17 +29,13 @@ Today we gonna build messing/chat app #ui using #flutter that runs both Android 
 ► Message Screen
 ► Audio Call
 ► Video Call
-► Contacts
 ► Search Contacts
-► Call History
-► Search on Call history
 ► Profile Screen
 ► Edit Profile
 
-### Chat/Messaging App Light and Dark Theme Final UI
+### Chat/Messaging
 
-![Preview](/gif.gif)
-![Preview](/ui_kit.gif)
-
-![App UI](/ui.png)
-![App UI](/chat_kit.png)
+![App UI](/screen1.jpg)
+![App UI](/screen2.jpg)
+![App UI](/screen3.jpg)
+![App UI](/screen4.jpg)
